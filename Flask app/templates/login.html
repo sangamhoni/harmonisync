@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block title %} 
+    Login
+{% endblock title %}
+
+{% block content %}
+
+<form method="POST" action="">
+     {{ form.hidden_tag() }}
+    <div>{{ form.email.label }}:
+    {% if form.email.errors %}
+            {% for error in form.email.errors %}
+                <span>{{ error }}</span>
+            {% endfor %}
+        </div>
+    {% endif %}
+        {{ form.email(class="#") }}</div>
+    <div>{{ form.password.label }}: 
+        {% if form.password.errors %}
+            {% for error in form.password.errors %}
+                <span>{{ error }}</span>
+            {% endfor %}
+        </div>
+    {% endif %}
+        {{ form.password() }}</div>
+    <div>{{ form.submit() }}</div>
+
+</form>
+{% endblock content %}
