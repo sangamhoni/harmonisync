@@ -51,7 +51,7 @@
 
 
     /* MAIN CSS */
-    .login-container {
+    .container {
         max-width: 400px;
         background-color: var(--white);
 
@@ -65,18 +65,22 @@
         box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
     }
 
-    .login-container .title {
+    .signup-container {
+        padding-top: 70px;
+    }
+
+    .container .title {
         display: flex;
         flex-direction: column;
         align-items: center;
     }
 
-    .login-container .title .logo{
+    .container .title .logo{
         width: 70px;
         margin-top: 10px;
     }
 
-    .user-login input {
+    .user-login input, .user-signup input {
         padding: 10px;
         margin-top: 20px;
         margin-bottom: 20px;
@@ -85,7 +89,12 @@
         border-bottom: 1px solid var(--primary-black);
     }
 
-    .user-login button{
+    .user-signup input {
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    .user-login button, .user-signup button{
         margin-top: 30px;
         width: 100%;
         padding: 16px;
@@ -96,7 +105,22 @@
         font-weight: bold;
     }
 
-    .sign-in a{
+    .user-signup button {
+        margin-bottom: 50px;
+    }
+
+    .user-signup .checkbox-container {
+        margin-top: 5px;
+        margin-bottom: -15px;
+    }
+
+    .user-signup input[type="checkbox"] {
+        width: initial;
+        margin: 0;
+        margin-right: 5px;
+    }
+
+    .signin-link a, .login-link a{
         color: var(--black);
         text-decoration: underline
     }
