@@ -2,28 +2,47 @@
 {% block title %} 
     Login
 {% endblock title %}
+{% block head %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='user-access.css') }}">
+{% endblock head %}
 
 {% block content %}
-
-<form method="POST" action="">
-     {{ form.hidden_tag() }}
-    <div>{{ form.email.label }}:
-    {% if form.email.errors %}
-            {% for error in form.email.errors %}
-                <span>{{ error }}</span>
-            {% endfor %}
+<div class="container login-container">
+        <div class="title">
+            <h1>Welcome</h1>
+            <img class="logo" src="{{ url_for('static', filename='logo-svg-black.svg') }}" alt="#">
         </div>
-    {% endif %}
-        {{ form.email(class="#") }}</div>
-    <div>{{ form.password.label }}: 
-        {% if form.password.errors %}
-            {% for error in form.password.errors %}
-                <span>{{ error }}</span>
-            {% endfor %}
-        </div>
-    {% endif %}
-        {{ form.password() }}</div>
-    <div>{{ form.submit() }}</div>
 
-</form>
+        <div class="user-signup", id="width_full">
+            <form method = "POST" action="#", id="width_full">
+                {{ form.hidden_tag() }}
+            <div>
+                {% if form.email.errors %}
+                        {% for error in form.email.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                {% endif %}
+            </div>
+                    {{ form.email(placeholder='Email') }}
+
+            
+            <div>
+                {% if form.password.errors %}
+                        {% for error in form.password.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                {% endif %}
+            </div>
+            {{ form.email(placeholder='Password') }}
+
+                {{form.submit(id='reduce_margin_bottom')}}
+            
+        </form>
+    </div>
+    
+    <div class="login-link">
+        Already have an account? <a href="{{url_for('login')}}">Log In</a>
+    </div>
+</div>
+
 {% endblock content %}
