@@ -1,7 +1,42 @@
 {% extends 'base.html' %}
-{% block title %} Home
+{% block title %} HarmoniSync
 {% endblock title %}
 
+{% block head %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='homepage.css') }}">
+
+{% endblock head %}
 {% block content %}
-Home
+    <header>
+        <div class="container">
+            <div class="app-name">
+                <div class="logo">
+                    <img src="{{ url_for('static', filename='logo-svg-yellow.svg') }}" alt="#">
+                </div>
+                <div>
+                    <h2>HarmoniSync <i class="fa-solid fa-flag"></i></h2>
+                    <p>Join the Beat, <u><i>Sync</i></u> with the World.</p>    
+                </div>
+            </div>
+            <hr>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="about-app">
+                <p>Welcome to <u>HarmoniSync</u> — your musical playground! Upload any music sheet, transform it for your favorite instruments, and jam along with interactive features.</p>
+                <p>Share your creations and connect with fellow music lovers. Let’s create musical magic together!</p>
+            </div>
+            
+            <div class="buttons">
+                <a class="button" href="{{url_for('register')}}">SIGN UP</a>
+                <a class="button" href="{{url_for('login')}}">LOG IN</a>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>made with <3 by <u><a href="{{url_for('team_intro')}}">Team HarmoniX</a></u> </p>
+    </footer>
 {% endblock content %}

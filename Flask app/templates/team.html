@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{% block title %} Team
+{% endblock title %}
+
+{% block head %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='team-intro.css') }}">
+
+{% endblock head %}
+{% block content %}
+
+    <header>
+        <div class="container">
+            <div class="logo">
+                <img src="{{ url_for('static', filename='logo-svg-yellow.svg') }}" alt="#">
+            </div>
+            <div class="hero-text">
+                <h3>HarmoniSync</h3>
+            </div>
+        </div>
+    </header>
+
+     <main>
+        <div class="container">
+            <div class="about-us">
+                <h2>Our <i>HarmoniX</i> Team</h2>
+                <hr>
+            </div>
+
+            <div class="team-grid">
+                <!-- Team Member 1 -->
+                <div class="team-member">
+                    <span>1.</span><h3>Kritan Bhandari</h3>
+                    <p><strong>University:</strong> Fisk University</p>
+                    <p><strong>Classification:</strong> Freshman</p>
+                    <p><strong>Interests:</strong> Web development, AI, Music</p>
+                    <div class="social-links">
+                        <a href="https://github.com/kritanbhandari" target="_blank">GitHub</a>
+                        <a href="https://www.linkedin.com/in/kritanbhandari/" target="_blank">LinkedIn</a>
+                    </div>  
+                </div>
+
+                <!-- Team Member 2 -->
+                <div class="team-member">
+                    <span>2.</span><h3>Sangam Subedi</h3>
+                    <p><strong>University:</strong> Fisk University</p>
+                    <p><strong>Classification:</strong> Freshman</p>
+                    <p><strong>Interests:</strong> Data Science, Music, Gaming</p>
+                    <div class="social-links">
+                        <a href="https://github.com/sangamhoni" target="_blank">GitHub</a>
+                        <a href="https://www.linkedin.com/in/sangamhoni/" target="_blank">LinkedIn</a>
+                    </div>
+                </div>
+
+                <!-- Team Member 3 -->
+                <div class="team-member">
+                    <span>3.</span><h3>Tao Tao</h3>
+                    <p><strong>University:</strong> Vanderbilt University</p>
+                    <p><strong>Classification:</strong> Junior </p>
+                    <p><strong>Interests:</strong> Software Engineering, Music Composition</p>
+                    <div class="social-links">
+                        <a href="https://github.com/TT515" target="_blank">GitHub</a>
+                        <a href="#" target="_blank">LinkedIn</a>
+                    </div>
+                </div>
+
+                <!-- Team Member 4 -->
+                <div class="team-member">
+                    <span>4.</span><h3>Jaco Lname</h3>
+                    <p><strong>University:</strong> Vanderbilt University</p>
+                    <p><strong>Classification:</strong> Sophomore </p>
+                    <p><strong>Interests:</strong> Cybersecurity, Music Theory</p>
+                    <div class="social-links">
+                        <a href="https://github.com/Jaco-Ren" target="_blank">GitHub</a>
+                        <a href="#" target="_blank">LinkedIn</a>
+                    </div>
+                </div>
+        </div>
+    </main>
+{% endblock content %}

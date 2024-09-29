@@ -10,6 +10,7 @@ from accepted_extensions import ACCEPTED_FILE_EXTENSIONS
 
 
 @app.route("/")
+@app.route("/home")
 def home():
     return render_template("home.html")
 
@@ -63,13 +64,14 @@ def login():
     """
     form = LoginForm()
     if current_user.is_authenticated:
+        flash("Already logged in", "success")
         return redirect(url_for("home"))
     if form.validate_on_submit():
         user = User.query.filter_by(email=form.email.data).first()
         if user and bcrypt.check_password_hash(user.password, form.password.data):
             login_user(user)
             next_page = request.args.get("next")
-            flash(f"You're in: {current_user}", "green")
+            flash(f"You're in: {current_user.username}", "green")
             return redirect(next_page) if next_page else redirect(url_for("home"))
         else:
             flash("Login Failed. Check your email or password.", "red")
@@ -98,7 +100,7 @@ def input_music_files():
             flash("Unsupported file", "red")
         else:
             musicfile = MusicFiles(
-                file_name=secure_filename(file_name),
+                file_name=file_name,
                 file_data=file_data.read(),
                 file_extension=file_extension,
                 user_id=current_user.get_id(),
@@ -112,8 +114,13 @@ def input_music_files():
 @app.route("/button_clicked/<button_id>")
 def button_clicked(button_id):
     session["instrument"] = button_id
-    # print(button_id)
+    print(button_id)
     return button_id
+
+
+@app.route("/team_intro")
+def team_intro():
+    return render_template("team.html")
 
 
 if __name__ == "__main__":
