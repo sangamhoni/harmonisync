@@ -54,7 +54,7 @@ class ReturnFiles(db.Model):
 
 if __name__ == "__main__":
     with app.app_context():
-        # db.create_all()
+        db.create_all()
         # db.session.commit()
         # user = User(
         #     username="John", email="johndoe@gmail.com", password="1234", is_creator=True
@@ -68,8 +68,8 @@ if __name__ == "__main__":
         # db.session.add(musicfiles)
         # db.session.add(returnfiles)
         # db.session.commit()
-        file_b = MusicFiles.query.filter_by(title="hehe").first()
-        file_acutal = return_file_from_binary(file_b.file_data)
+        # file_b = MusicFiles.query.filter_by(title="hehe").first()
+        # file_acutal = return_file_from_binary(file_b.file_data)
         # with open("temp.jpg", "wb") as f1:
         #     bytesio_object = BytesIO(file1.file_data)
         #     f1.write(bytesio_object.getbuffer())

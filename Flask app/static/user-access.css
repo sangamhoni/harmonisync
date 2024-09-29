@@ -105,6 +105,21 @@
         font-weight: bold;
     }
 
+    input[type="submit"] {
+        margin-top: 30px;
+        width: 100%;
+        padding: 16px;
+        border-radius: 50px;
+        border: none;
+        background: var(--accent-yellow);
+        margin-bottom: 100px;
+        font-weight: bold;
+    }
+
+    #reduce_margin_bottom {
+        margin-bottom: 50px;
+    }
+
     .user-signup button {
         margin-bottom: 50px;
     }
@@ -120,7 +135,17 @@
         margin-right: 5px;
     }
 
+/* #creator {
+        width: initial;
+        margin: 0;
+        margin-right: 5px;
+    } */
+
     .signin-link a, .login-link a{
         color: var(--black);
         text-decoration: underline
     }
+
+#width_full{
+    width: 100%;
+}
