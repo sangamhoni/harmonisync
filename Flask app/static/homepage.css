@@ -145,8 +145,8 @@ main .button {
 }
 
 footer {
-    display: block;
-    position: relative;
+    display: flex;
+    /* position: relative; */
     bottom: 0;
     margin-top: auto;
     margin-bottom: 15px;
@@ -160,4 +160,11 @@ footer p{
 
 footer p u{
     color: var(--accent-yellow)
+}
+
+footer .logout-btn{
+    position: absolute;
+    bottom: 22px;
+    right: 240px;
+    font-style: italic;
 }
