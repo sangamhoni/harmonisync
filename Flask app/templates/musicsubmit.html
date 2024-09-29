@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %} Music
+{% endblock title %}
+
+{% block content %}
+
+<form method="POST" action="" enctype="multipart/form-data">
+     {{ form.hidden_tag() }}
+    <div>{{ form.title.label }}:
+    {% if form.title.errors %}
+            {% for error in form.title.errors %}
+                <span>{{ error }}</span>
+            {% endfor %}
+        </div>
+    {% endif %}
+        {{ form.title(class="#") }}</div>
+
+    <div>{{ form.music_file.label }}: 
+        {% if form.music_file.errors %}
+            {% for error in form.music_file.errors %}
+                <span>{{ error }}</span>
+            {% endfor %}
+        </div>
+    {% endif %}
+        {{ form.music_file() }}</div>
+    <div>{{ form.submit() }}</div>
+
+</form>
+
+{% endblock content %}
