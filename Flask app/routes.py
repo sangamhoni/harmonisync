@@ -1,8 +1,12 @@
 from init import app, bcrypt, db, login_manager
 from flask import render_template, flash, redirect, url_for, request
-from forms import RegistrationForm, LoginForm
-from database import User
+from forms import RegistrationForm, LoginForm, MusicFilesForm
+from database import User, MusicFiles
 from flask_login import login_user, logout_user, current_user, login_required
+from werkzeug.utils import secure_filename
+from accepted_extensions import ACCEPTED_FILE_EXTENSIONS
+
+# from io import BytesIO
 
 
 @app.route("/")
@@ -77,6 +81,33 @@ def logout():
     """Logs the user out (removes current_user from the current context)"""
     logout_user()
     return redirect(url_for("home"))
+
+
+@app.route("/upload_music", methods=["GET", "POST"])
+@login_required
+def input_music_files():
+    form = MusicFilesForm()
+    if form.validate_on_submit():
+        file_data = form.music_file.data
+        file_name = secure_filename(file_data.filename)
+        file_extension = file_name.split(".")[1]
+        if MusicFiles.query.filter_by(title=form.title.data).first():
+            flash("The nickname is taken. :(", "red")
+            return redirect(url_for("input_music_files"))
+        if file_extension not in ACCEPTED_FILE_EXTENSIONS:
+            flash("Unsupported file", "red")
+        else:
+            musicfile = MusicFiles(
+                title=form.title.data,
+                file_name=secure_filename(file_name),
+                file_data=file_data.read(),
+                file_extension=file_extension,
+                user_id=current_user.get_id(),
+            )
+            db.session.add(musicfile)
+            db.session.commit()
+
+    return render_template("musicsubmit.html", form=form)
 
 
 if __name__ == "__main__":

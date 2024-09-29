@@ -2,6 +2,8 @@ from sqlalchemy.orm import Mapped, mapped_column, relationship
 from init import db, app, login_manager
 from sqlalchemy import ForeignKey
 from flask_login import UserMixin
+from io import BytesIO
+from functions import return_file_from_binary
 
 
 @login_manager.user_loader
@@ -36,8 +38,9 @@ class Posts(db.Model):
 class MusicFiles(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(120), nullable=False)
-    file_name = db.Column(db.String(120), nullable=True)
-    file_data = db.Column(db.LargeBinary, nullable=True)
+    file_name = db.Column(db.String(120), nullable=False)
+    file_data = db.Column(db.LargeBinary, nullable=False)
+    file_extension = db.Column(db.String(20), nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey("user.id"), nullable=False)
 
 
@@ -65,4 +68,10 @@ if __name__ == "__main__":
         # db.session.add(musicfiles)
         # db.session.add(returnfiles)
         # db.session.commit()
-        print(User.query.filter_by(email="sdfsdf").all())
+        file_b = MusicFiles.query.filter_by(title="hehe").first()
+        file_acutal = return_file_from_binary(file_b.file_data)
+        # with open("temp.jpg", "wb") as f1:
+        #     bytesio_object = BytesIO(file1.file_data)
+        #     f1.write(bytesio_object.getbuffer())
+
+        # print(User.query.filter_by(email="sdfsdf").all())
