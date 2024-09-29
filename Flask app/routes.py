@@ -6,8 +6,6 @@ from flask_login import login_user, logout_user, current_user, login_required
 from werkzeug.utils import secure_filename
 from accepted_extensions import ACCEPTED_FILE_EXTENSIONS
 
-# from io import BytesIO
-
 
 @app.route("/")
 @app.route("/home")
@@ -64,7 +62,7 @@ def login():
     """
     form = LoginForm()
     if current_user.is_authenticated:
-        flash("Already logged in", "success")
+        flash("Already logged in", "green")
         return redirect(url_for("home"))
     if form.validate_on_submit():
         user = User.query.filter_by(email=form.email.data).first()

@@ -28,11 +28,17 @@
                 <p>Welcome to <u>HarmoniSync</u> — your musical playground! Upload any music sheet, transform it for your favorite instruments, and jam along with interactive features.</p>
                 <p>Share your creations and connect with fellow music lovers. Let’s create musical magic together!</p>
             </div>
-            
+            {% if current_user.is_authenticated %}
+                <div class="buttons">
+                <a class="button" href="{{url_for('input_music_files')}}">Upload Music</a>
+                </div>
+            </div>
+            {% else %}
             <div class="buttons">
                 <a class="button" href="{{url_for('register')}}">SIGN UP</a>
                 <a class="button" href="{{url_for('login')}}">LOG IN</a>
             </div>
+            {% endif %}
         </div>
     </main>
 
