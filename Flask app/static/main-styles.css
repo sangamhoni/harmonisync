@@ -1,0 +1,14 @@
+.alert-box {
+    border: 1px solid #d4edda;
+    padding: 12px 12px;
+}
+
+.alert-box-red {
+    border: 1px solid #f5c6cc;
+    background-color: #f7d7da;
+}
+
+.alert-box-green {
+    border: 1px solid #c2e5ca;
+    background-color: #d4edda;
+}
