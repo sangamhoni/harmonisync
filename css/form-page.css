@@ -53,6 +53,9 @@
     h3 {
         font-size: 2rem;
     }
+    h4 {
+        font-size: 1.3rem;
+    }
 
     h1, h2, h3, h4, h5, h6, p {
         margin: 0.6em 0;
@@ -140,13 +143,22 @@ main .browse-button{
     width: 300px;
     padding: 0px 50px;
     border-radius: 5px;
-    margin-bottom: 100px;
+    margin-bottom: 30px;
 
 }
 
+main h4{
+    color: var(--accent-white)
+}
 
-main .upload-button{
-    font-size: 2rem;
+main .instruments-section {
+    margin-top: -20px;
+    display: flex;
+    gap: 20px;
+}
+
+main .instruments-btn{
+    font-size: 1.5rem;
     width: 70px;
     height: 70px; 
     border-radius: 100%;
@@ -154,4 +166,21 @@ main .upload-button{
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+main .upload-button{
+    font-size: 2rem;
+    width: 70px;
+    height: 70px; 
+    border-radius: 35px;
+    padding: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+main button:nth-last-child(1) {
+    width: 160px;
+    border-radius: 35px;
+    margin-left: 40px;
 }
