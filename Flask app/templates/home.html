@@ -4,6 +4,7 @@
 
 {% block head %}
     <link rel="stylesheet" href="{{ url_for('static', filename='homepage.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 {% endblock head %}
 {% block content %}
@@ -44,5 +45,11 @@
 
     <footer>
         <p>made with <3 by <u><a href="{{url_for('team_intro')}}">Team HarmoniX</a></u> </p>
+        {% if current_user.is_authenticated%}
+            <a href="{{url_for('logout')}}"><div class="logout-btn">
+            <i class="fa-solid fa-arrow-right-from-bracket"></i>
+            Logout
+        {%endif%}
+        </div></a>
     </footer>
 {% endblock content %}

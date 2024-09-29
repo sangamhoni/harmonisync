@@ -91,11 +91,8 @@ def input_music_files():
         file_data = form.music_file.data
         file_name = secure_filename(file_data.filename)
         file_extension = file_name.split(".")[1]
-        # if MusicFiles.query.filter_by(title=form.title.data).first():
-        #     flash("The nickname is taken. :(", "red")
-        #     return redirect(url_for("input_music_files"))
         if file_extension not in ACCEPTED_FILE_EXTENSIONS:
-            flash("Unsupported file. Please upload again", "red")
+            flash("Unsupported file. Please upload again.", "red")
         else:
             musicfile = MusicFiles(
                 file_name=file_name,
