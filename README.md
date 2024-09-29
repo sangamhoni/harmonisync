@@ -3,6 +3,11 @@ Welcome to **HarmoniSync**—your musical playground! Here, you can upload any m
 
 &nbsp;  
 
+# Video Preview  
+Video preview [here](https://www.youtube.com/watch?v=1Dw4-mXa_lo).
+
+&nbsp;  
+
 ## Inspiration  
 Our inspiration for **HarmoniSync** came from a challenge faced by our teammate Tao-Tao, who is both a music and math major. Tao-Tao struggled with playing classical instruments because music sheets for those instruments aren't readily available across multiple instrument types. Recognizing this problem, we decided to take it on ourselves and create a solution to simplify music practice and collaboration for musicians like Tao-Tao.  
 
