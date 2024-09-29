@@ -95,7 +95,7 @@ def input_music_files():
         #     flash("The nickname is taken. :(", "red")
         #     return redirect(url_for("input_music_files"))
         if file_extension not in ACCEPTED_FILE_EXTENSIONS:
-            flash("Unsupported file", "red")
+            flash("Unsupported file. Please upload again", "red")
         else:
             musicfile = MusicFiles(
                 file_name=file_name,
@@ -118,6 +118,7 @@ def button_clicked(button_id):
 
 @app.route("/team_intro")
 def team_intro():
+    # flash("Here", "red")
     return render_template("team.html")
 
 

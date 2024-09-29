@@ -16,24 +16,24 @@
         <div class="user-signup", id="width_full">
             <form method = "POST" action="#", id="width_full">
                 {{ form.hidden_tag() }}
-            <div>
+                <div>
+                {{ form.email(placeholder='Email') }}
                 {% if form.email.errors %}
                         {% for error in form.email.errors %}
-                            <span>{{ error }}</span>
+                            <small class="text-red">{{ error }}</small>
                         {% endfor %}
                 {% endif %}
             </div>
-                    {{ form.email(placeholder='Email') }}
 
             
             <div>
+                {{ form.password(placeholder='Password') }}
                 {% if form.password.errors %}
                         {% for error in form.password.errors %}
-                            <span>{{ error }}</span>
+                            <small class="text-red">{{ error }}</small>
                         {% endfor %}
                 {% endif %}
             </div>
-            {{ form.password(placeholder='Password') }}
 
                 {{form.submit(id='reduce_margin_bottom')}}
             

@@ -6,10 +6,9 @@
     {% endblock head %}
     <link rel="stylesheet" href="{{url_for('static', filename='main-styles.css')}}">
   </head>
+
   <body>
-
-
-{% with messages = get_flashed_messages(with_categories=true)%}
+    {% with messages = get_flashed_messages(with_categories=true)%}
 {% if messages%}
     {% for category, message in messages%}
     <p class="alert-box-{{category}}">{{message}}</p>
@@ -19,5 +18,6 @@
     {% block content %}
 
     {% endblock content %}
+
   </body>
 </html>
