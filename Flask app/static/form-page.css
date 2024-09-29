@@ -141,9 +141,12 @@ main .button {
 
 main .browse-button{
     width: 300px;
+    left: 50%;
+    transform: translateX(-50%);
     padding: 0px 50px;
     border-radius: 5px;
     margin-bottom: 30px;
+    position: relative;
 
 }
 
@@ -166,6 +169,7 @@ main .instruments-btn{
     display: flex;
     align-items: center;
     justify-content: center;
+    /* opacity: 50%; */
 }
 
 main .upload-button{
@@ -177,10 +181,45 @@ main .upload-button{
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
 }
 
 main button:nth-last-child(1) {
     width: 160px;
     border-radius: 35px;
     margin-left: 40px;
+}
+
+/* .file{
+  display:block;
+  position: relative;
+  width: 200px;
+  height: 200px;
+  background: url(http://icons.iconarchive.com/icons/paomedia/small-n-flat/1024/device-camera-icon.png) no-repeat center center;
+  background-size: cover;
+} */
+
+#file_input{
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  cursor: pointer;
+}
+
+.highlight_on {
+    opacity: 100%;
+}
+
+.highlight_off {
+    opacity: 50%;
+}
+/* #file_input{
+    opacity: 0;
+} */
+
+.new{
+    margin-bottom: 30px;
 }

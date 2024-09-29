@@ -37,7 +37,6 @@ class Posts(db.Model):
 
 class MusicFiles(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String(120), nullable=False)
     file_name = db.Column(db.String(120), nullable=False)
     file_data = db.Column(db.LargeBinary, nullable=False)
     file_extension = db.Column(db.String(20), nullable=False)

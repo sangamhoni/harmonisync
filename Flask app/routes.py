@@ -1,5 +1,5 @@
 from init import app, bcrypt, db, login_manager
-from flask import render_template, flash, redirect, url_for, request
+from flask import render_template, flash, redirect, url_for, request, session
 from forms import RegistrationForm, LoginForm, MusicFilesForm
 from database import User, MusicFiles
 from flask_login import login_user, logout_user, current_user, login_required
@@ -91,14 +91,13 @@ def input_music_files():
         file_data = form.music_file.data
         file_name = secure_filename(file_data.filename)
         file_extension = file_name.split(".")[1]
-        if MusicFiles.query.filter_by(title=form.title.data).first():
-            flash("The nickname is taken. :(", "red")
-            return redirect(url_for("input_music_files"))
+        # if MusicFiles.query.filter_by(title=form.title.data).first():
+        #     flash("The nickname is taken. :(", "red")
+        #     return redirect(url_for("input_music_files"))
         if file_extension not in ACCEPTED_FILE_EXTENSIONS:
             flash("Unsupported file", "red")
         else:
             musicfile = MusicFiles(
-                title=form.title.data,
                 file_name=secure_filename(file_name),
                 file_data=file_data.read(),
                 file_extension=file_extension,
@@ -108,6 +107,13 @@ def input_music_files():
             db.session.commit()
 
     return render_template("musicsubmit.html", form=form)
+
+
+@app.route("/button_clicked/<button_id>")
+def button_clicked(button_id):
+    session["instrument"] = button_id
+    # print(button_id)
+    return button_id
 
 
 if __name__ == "__main__":

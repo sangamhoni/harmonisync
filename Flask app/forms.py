@@ -4,6 +4,7 @@ from wtforms import (
     PasswordField,
     SubmitField,
     FileField,
+    RadioField,
 )
 from wtforms.validators import DataRequired, Email, Length, InputRequired, EqualTo
 from flask_wtf import FlaskForm
@@ -35,6 +36,5 @@ class LoginForm(FlaskForm):
 
 
 class MusicFilesForm(FlaskForm):
-    title = StringField("Nickname", validators=[DataRequired(), Length(1, 20)])
-    music_file = FileField("Music File", validators=[DataRequired()])
-    submit = SubmitField("Send")
+    music_file = FileField("", validators=[DataRequired()])
+    submit = SubmitField()
