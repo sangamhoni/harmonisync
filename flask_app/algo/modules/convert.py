@@ -5,6 +5,7 @@ import re
 import sys
 import tempfile
 import pygame
+from pathlib import Path
 
 def parsetoxml(input):
     try:
@@ -156,38 +157,48 @@ def export_lilypond_to_pdf(lilypond_string):
     """
     # Step 1: Create a temporary directory to store the .ly file and the output PDF
     with tempfile.TemporaryDirectory() as temp_dir:
+
         # Step 2: Write the LilyPond string to a .ly file
         lilypond_file_path = os.path.join(temp_dir, 'tempfile.ly')
         with open(lilypond_file_path, 'w') as ly_file:
             ly_file.write(lilypond_string)
 
         # Step 3: Define the path to the output PDF (without .pdf extension)
-        output_pdf_base = os.path.join(os.path.expanduser("~"), 'Desktop', 'output')
+        #path = os.path.join(os.path.expanduser("~"), 'Desktop', 'output')
+        #output_pdf_base = Path(path)
 
-        # Step 4: Run the LilyPond command to generate the PDF
-        try:
-            result = subprocess.run(
-                ['lilypond', '--output', output_pdf_base, lilypond_file_path], 
-                check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True
-            )
-            print("LilyPond output:", result.stdout)
-            print("LilyPond error:", result.stderr)
-        except subprocess.CalledProcessError as e:
-            # Print LilyPond error output
-            print(f"LilyPond failed with error:\n{e.stderr}")
-            return None
+        # Step 3: Create a temporary file path for the output (without .pdf extension)
+        with tempfile.TemporaryDirectory() as temp_dir:
+            # Create the base path for the output PDF file in the temporary directory
+            temp_file_path = Path(temp_dir) / 'output'
 
-        # Step 5: The correct path to the PDF will have `.pdf` appended
-        output_pdf_path = output_pdf_base + ".pdf"
+            # Add the .pdf suffix to create the full output path
+            output_pdf_base = temp_file_path#.with_suffix('.pdf')
 
-        # Step 6: Check if the PDF was created
-        if not os.path.exists(output_pdf_path):
-            print(f"PDF file not found: {output_pdf_path}")
-            return None
+            # Step 4: Run the LilyPond command to generate the PDF
+            try:
+                result = subprocess.run(
+                    ['lilypond', '--output', output_pdf_base, lilypond_file_path], 
+                    check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True
+                )
+                print("LilyPond output:", result.stdout)
+                print("LilyPond error:", result.stderr)
+            except subprocess.CalledProcessError as e:
+                # Print LilyPond error output
+                print(f"LilyPond failed with error:\n{e.stderr}")
+                return None
 
-        # Step 7: Read the generated PDF content and return it as bytes
-        with open(output_pdf_path, 'rb') as pdf_file:
-            pdf_content = pdf_file.read()
+            # Step 5: The correct path to the PDF will have `.pdf` appended
+            output_pdf_path = str(output_pdf_base) + ".pdf"
+
+            # Step 6: Check if the PDF was created
+            if not os.path.exists(output_pdf_path):
+                print(f"PDF file not found: {output_pdf_path}")
+                return None
+
+            # Step 7: Read the generated PDF content and return it as bytes
+            with open(output_pdf_path, 'rb') as pdf_file:
+                pdf_content = pdf_file.read()
 
         return pdf_content  # Return the PDF content as bytes
     
