@@ -155,6 +155,7 @@ def export_lilypond_to_pdf(lilypond_string):
     Takes a LilyPond-formatted string, compiles it into a PDF using LilyPond, 
     and returns the PDF content as bytes.
     """
+    lilypond_executable = "/Users/tao-taohe/Downloads/lilypond-2.24.4/bin/lilypond"
     # Step 1: Create a temporary directory to store the .ly file and the output PDF
     with tempfile.TemporaryDirectory() as temp_dir:
 
@@ -178,7 +179,7 @@ def export_lilypond_to_pdf(lilypond_string):
             # Step 4: Run the LilyPond command to generate the PDF
             try:
                 result = subprocess.run(
-                    ['lilypond', '--output', output_pdf_base, lilypond_file_path], 
+                    [lilypond_executable, '--output', output_pdf_base, lilypond_file_path], 
                     check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True
                 )
                 print("LilyPond output:", result.stdout)
