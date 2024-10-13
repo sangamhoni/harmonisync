@@ -7,7 +7,8 @@ from werkzeug.utils import secure_filename
 from accepted_extensions import ACCEPTED_FILE_EXTENSIONS
 from algo.main import toHarm, toTab, readInput
 from algo.modules.convert import export_lilypond_to_pdf, export_pdf_to_desktop
-
+from io import BytesIO
+from functions import return_file_from_binary
 
 @app.route("/")
 @app.route("/home")
@@ -106,9 +107,13 @@ def input_music_files():
             db.session.commit()
             flash(f"{file_name} uploaded successfully!", "green")
 
-            with open(f"{file_name}.{file_extension}", "wb") as f1:
-                f1.write(file_data.read())
-            read_input_return = readInput(f"{file_name}.{file_extension}")
+            file_b = MusicFiles.query.filter_by(file_name=f'{file_name}').first()
+            file_acutal = return_file_from_binary(file_b.file_data)
+
+            with open(f"{file_name}", "wb") as f1:
+                f1.write(file_acutal)
+
+            read_input_return = readInput(f"/Users/tao-taohe/Desktop/harmonisync/flask_app/{file_name}")
             to_harm_return = toHarm(read_input_return)
             lilypond_object = toTab(to_harm_return)
             pdf_object = export_lilypond_to_pdf(lilypond_object)
