@@ -117,7 +117,8 @@ def input_music_files():
             to_harm_return = toHarm(read_input_return)
             lilypond_object = toTab(to_harm_return)
             pdf_object = export_lilypond_to_pdf(lilypond_object)
-            export_pdf_to_desktop(pdf_object, f"\Testfiles\{file_name}.pdf")
+            
+            export_pdf_to_desktop(pdf_object, "test.pdf")
 
     return render_template("musicsubmit.html", form=form)
 

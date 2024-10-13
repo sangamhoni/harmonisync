@@ -15,12 +15,14 @@ def readInput(input):
         output = convert_image_to_musicxml(input)
 
     play_score(output)
+    print("a is done")
 
     return output
 
 
 def toHarm(input):
     ha = anaHarm.analyze(input)
+    print("b is done")
     return ha
 
 
@@ -28,6 +30,7 @@ def toTab(ha):
     guitar = toGuitar.guitarScore(ha)
     lily1 = musicxml2ly(guitar)
     tabs = toGuitar.replace_staff_with_tabstaff(lily1)
+    print("c is done")
     return tabs
 
 

@@ -118,13 +118,16 @@ def delete_lines_between(ly_content, start_pattern, end_pattern):
     return '\n'.join(new_lines)  # Join the remaining lines back into a string
 
 def musicxml2ly(score):
-    file_path = '/Users/tao-taohe/Desktop/harmoniSync/algorithm/harmToTab/output.ly'
-    # Write the score to a LilyPond file at the specified output path
-    score.write('lilypond', fp=file_path)
+    # Create a temporary directory and file for the LilyPond output
+    with tempfile.TemporaryDirectory() as temp_dir:
+        temp_file_path = f"{temp_dir}/output.ly"
 
-    # Read the content of the written file as a string
-    with open(file_path, 'r', encoding='utf-8') as f:
-        ly_content = f.read()
+        # Write the score to the LilyPond file at the temporary output path
+        score.write('lilypond', fp=temp_file_path)
+
+        # Read the content of the written file as a string
+        with open(temp_file_path, 'r', encoding='utf-8') as f:
+            ly_content = f.read()
 
     ly_content = delete_lines_between(ly_content, r'version "2.24"', r'header ')
     ly_content = delete_lines_between(ly_content, r'context ', r' }')
