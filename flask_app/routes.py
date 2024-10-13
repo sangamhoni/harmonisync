@@ -9,6 +9,7 @@ from algo.main import toHarm, toTab, readInput
 from algo.modules.convert import export_lilypond_to_pdf, export_pdf_to_desktop
 from io import BytesIO
 from functions import return_file_from_binary
+from pathlib import Path
 
 @app.route("/")
 @app.route("/home")
@@ -113,12 +114,16 @@ def input_music_files():
             with open(f"{file_name}", "wb") as f1:
                 f1.write(file_acutal)
 
-            read_input_return = readInput(f"/Users/tao-taohe/Desktop/harmonisync/flask_app/{file_name}")
+            path = Path(f"/Users/tao-taohe/Desktop/harmonisync/flask_app/{file_name}")
+            read_input_return = readInput(str(path))
             to_harm_return = toHarm(read_input_return)
             lilypond_object = toTab(to_harm_return)
             pdf_object = export_lilypond_to_pdf(lilypond_object)
-            
-            export_pdf_to_desktop(pdf_object, "test.pdf")
+
+            with open("test.pdf", 'wb') as pdf_file:
+                pdf_file.write(pdf_object)
+
+            # export_pdf_to_desktop(pdf_object, "test.pdf")
 
     return render_template("musicsubmit.html", form=form)
 
