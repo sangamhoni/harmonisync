@@ -1,0 +1,29 @@
+.alert-box-red {
+    border: 1px solid #f5c6cc;
+    background-color: #f7d7da;
+    padding: 12px 15px;
+    color: #721d23;
+    width: 50%;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    border-radius: 5px;
+    position: absolute;
+    top: 30px;
+}
+
+.alert-box-green {
+    border: 1px solid #c2e5ca;
+    background-color: #d4edda;
+    padding: 12px 12px;
+    color: #145624;
+    width: 50%;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    border-radius: 5px;
+    position: absolute;
+    top: 30px;
+}
+
+.text-red{
+    color: rgba(205, 18, 18, 0.938);
+}

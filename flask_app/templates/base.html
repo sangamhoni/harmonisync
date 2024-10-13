@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>{% block title %}{% endblock %}</title>
+    {% block head %}
+    {% endblock head %}
+    <link rel="stylesheet" href="{{url_for('static', filename='main-styles.css')}}">
+  </head>
+
+  <body>
+    {% with messages = get_flashed_messages(with_categories=true)%}
+{% if messages%}
+    {% for category, message in messages%}
+    <p class="alert-box-{{category}}">{{message}}</p>
+    {%endfor%}
+    {%endif%}
+    {%endwith%}
+    {% block content %}
+
+    {% endblock content %}
+
+  </body>
+</html>

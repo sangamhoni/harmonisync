@@ -1,0 +1,170 @@
+/* base CSS */
+:root {
+    --primary-black: #292929;
+    --primary-yellow: #e6d62d;
+    --accent-yellow: #feed36;
+    --accent-white: #f2f2f2;
+    --white: #ffffff;
+    --black: #000000;
+}
+
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+}
+
+body{
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    line-height: 1.5rem;
+    color: var(--accent-yellow);
+    background-color: var(--primary-black);
+
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+    min-height: 100vh; /* Makes sure body takes full height */
+    margin: 0; /* Remove margin */
+}
+
+img {
+    max-width: 100%;
+    margin: 20px 0;
+    /* margin-right: -30px; */
+}
+
+h1, h2{
+    margin-bottom: 15px;
+    font-weight: bolder;
+}
+
+h1 {
+    font-size: 4rem;
+}
+h2 {
+    font-size: 3rem;
+}
+h3 {
+    font-size: 2rem;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+    margin: 0.6em 0;
+}
+
+
+ul{
+    list-style-type: none;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.container {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+
+/* MAIN CSS */
+
+header .container .app-name{
+    display: flex;
+    gap: 20px;
+    /* height: 40vh; */
+}
+
+
+header .container .app-name .logo img{
+    margin-top: 7px;
+    height: 120px;
+}
+
+header .container .app-name p{
+    font-size: 2rem;
+}
+
+header .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 130px;
+
+}
+
+hr{
+    min-width: 1200px;
+    display: block;
+    color: var(--accent-yellow);
+    border-color: var(--accent-yellow);
+    margin-top: 10px;
+    margin-bottom: 1a0px;
+}
+
+
+main .container{
+    margin-top: 35px;
+    padding: 0 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 50px;
+}
+
+main .container p{
+    font-size: 1.2rem;
+    line-height: 1.5em;
+    letter-spacing: 0.1em;
+    text-align: center;
+    margin: 5px 0;
+    color: var(--accent-white);
+}
+
+main .container p u{
+    color: var(--accent-yellow);
+}
+
+main .button {
+    display: inline-flex;
+    margin: 0 10px;
+    padding: 16px 100px;
+    border-radius: 50px;
+    border: none;
+    background: var(--accent-yellow);
+    color: var(--primary-black);
+    margin-bottom: 100px;
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+footer {
+    display: flex;
+    /* position: relative; */
+    bottom: 0;
+    margin-top: auto;
+    margin-bottom: 15px;
+}
+
+footer p{
+    font-style: italic;
+    color: var(--accent-white);
+    font-size: 1.1rem;
+}
+
+footer p u{
+    color: var(--accent-yellow)
+}
+
+footer .logout-btn{
+    position: absolute;
+    bottom: 22px;
+    right: 240px;
+    font-style: italic;
+}
